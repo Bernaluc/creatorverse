@@ -1,0 +1,187 @@
+import React from 'react';
+import './style.css';
+import Header from './components/Header';
+import Cards from './components/Cards';
+import useRoutes from 'react-router-dom';
+import { supabase } from './client';
+import { useState, useEffect } from 'react';
+
+export default function App() {
+  const [creators, setCreators] = useState([])
+  const [creator, setCreator] = useState({
+    name: "",
+    url: "",
+    desciption: "",
+    imageURL: "",
+  });
+  
+  const { name, url, description, imageURL } = creator;
+
+  useEffect(() => {
+    fetchCreators();
+  }, []);
+
+  async function fetchCreators() {
+    
+    const {data, error } = await supabase
+      .from('creators')
+      .select()
+    setCreators(data)
+    console.log(data)
+  }
+
+  async function createCreator() {
+    console.log('creatCreators')
+    await supabase
+      .from('creators')
+      .insert([
+        { name, url, description, imageURL }
+      ])
+      .single();
+    setCreator({ name: '', url: '', description: '', imageURL: '' })
+    fetchCreators()
+    console.log("CreateCreator: Fetch: ", data)
+  }
+
+  return (
+    <div className="App">
+      <input
+        placeholder="Name"
+        value={name}
+        onChange={(e) => setCreator({ ...creator, name: e.target.value })}
+      />
+      <input
+        placeholder="url"
+        value={url}
+        onChange={(e) => setCreator({ ...creator, url: e.target.value })}
+      />
+      <input
+        placeholder="description"
+        value={description}
+        onChange={(e) =>
+          setCreator({ ...creator, description: e.target.value })
+        }
+      />
+      <input
+        placeholder="imageURL"
+        value={imageURL}
+        onChange={(e) => setCreator({ ...creator, imageURL: e.target.value })}
+      />
+      <button onClick={createCreator}>Add Creator</button>
+
+      <h2> Creators </h2>
+      {creators.map((creator) => (
+        <div key={creator.id}>
+          <h2>{creator.name}</h2>
+          <p>{creator.url}</p>
+          <p>{creator.description}</p>
+          <p>{creator.imageURL}</p>
+        </div>
+      ))}
+    </div>
+  );
+
+
+
+
+
+
+##############################################################################################################################################################################
+
+
+
+
+import React from 'react';
+import './style.css';
+import Header from './components/Header';
+import Cards from './components/Cards';
+import useRoutes from 'react-router-dom';
+import { supabase } from './client';
+import { useState, useEffect } from 'react';
+
+export default function App() {
+  const [creators, setCreators] = useState([])
+  const [creator, setCreator] = useState({
+    name: "",
+    url: "",
+    desciption: "",
+    imageURL: "",
+  });
+  
+  const { name, url, description, imageURL } = creator;
+
+  useEffect(() => {
+    fetchCreators();
+  }, []);
+
+  async function fetchCreators() {
+    
+    const {data, error } = await supabase
+      .from('creators')
+      .select()
+    setCreators(data)
+    console.log(data)
+  }
+
+  async function createCreator() {
+    console.log('createCreators')
+    await supabase
+      .from('creators')
+      .insert([
+        { name, url, description, imageURL }
+      ])
+      .single();
+    setCreator({ name: '', url: '', description: '', imageURL: '' })
+    fetchCreators()
+    console.log("CreateCreator: Fetch: ", data)
+  }
+
+  return (
+    <div className="App">
+      <input
+        placeholder="Name"
+        value={name}
+        onChange={(e) => setCreator({ ...creator, name: e.target.value })}
+      />
+      <input
+        placeholder="url"
+        value={url}
+        onChange={(e) => setCreator({ ...creator, url: e.target.value })}
+      />
+      <input
+        placeholder="description"
+        value={description}
+        onChange={(e) => setCreator({ ...creator, description: e.target.value })}
+      />
+      <input
+        placeholder="imageURL"
+        value={imageURL}
+        onChange={(e) => setCreator({ ...creator, imageURL: e.target.value })}
+      />
+      <button onClick={createCreator}>Add Creator</button>
+
+      <h2> Creators </h2>
+      {creators.map((creator) => (
+          <Cards
+            name={creator.name} 
+            url={creator.url}
+            description={creator.description}
+            imageURL={creator.imageURL}
+          />
+      ))}
+    </div>
+  );
+}
+
+
+  
+  
+  
+
+
+  
+  
+  
+  
+  
+  
