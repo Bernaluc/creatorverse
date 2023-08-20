@@ -2,22 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Navigation() {
-  return (
-    <div className="bg-image">
-    <nav className="navbar">
-      <h1>Creatorverse</h1>
-      <div className="links">
-        <ul>
-          <li> 
-          <Link to="/">Home</Link>
-          </li><li>
-          <Link to="/add-creator">Add Creator</Link>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    </div>
-  );
-}
 
+  return(
+    <nav aria-label="breadcrumb">
+      <ul>
+        <li><strong>CREATORVERSE</strong></li>
+      </ul>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/add-creator" role="button">Add Creator</Link>
+        </li>
+      </ul>
+    </nav>
+  )
+}
 export default Navigation;

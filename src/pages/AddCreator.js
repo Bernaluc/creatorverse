@@ -31,29 +31,42 @@ export default function AddCreator() {
   }
 
   return(
-
-    <div className="creator-input">
-      <input
+    <form>
+    <div className="grid">
+      <label for="Creator">
+        Creator Name
+      <input id="name" required
         placeholder="Name"
         value={name}
         onChange={(e) => setCreator({ ...creator, name: e.target.value })}
       />
-      <input
-        placeholder="url"
+      </label>
+      <label for="url">
+        URL
+      <input id = "url"
+        placeholder="url" required
         value={url}
         onChange={(e) => setCreator({ ...creator, url: e.target.value })}
       />
-      <input
+      </label>
+      <label for="description">
+        Description
+      <input id="description" required
         placeholder="description"
         value={description}
         onChange={(e) => setCreator({ ...creator, description: e.target.value })}
       />
-      <input
-        placeholder="imageURL"
+      </label>
+      <label for="imageURL">
+        Image URL
+      <input id="imageURL" required
+        placeholder="www.example.com/image.png"
         value={imageURL}
         onChange={(e) => setCreator({ ...creator, imageURL: e.target.value })}
       />
+      </label>
       <button onClick={createCreator}>Add Creator</button>
     </div>
+    </form>
   );
   }

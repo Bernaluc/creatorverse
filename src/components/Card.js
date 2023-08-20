@@ -9,8 +9,12 @@ function Card(props) {
       <p> {props.url} </p>
       <p> {props.description} </p> 
       <p> {props.imageURL} </p>
+    <article>
+        <header>{props.name}</header>
+        {props.description}
+        <footer></footer>
+    </article>
     </div> 
-    
   )
 }
 

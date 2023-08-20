@@ -9,7 +9,7 @@ import AddCreator from './pages/AddCreator'
 import Navigation from './components/Navigation'
 
 import App from './App';
-import 'css/pico.min.css'
+import "@picocss/pico/css/pico.min.css";
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
