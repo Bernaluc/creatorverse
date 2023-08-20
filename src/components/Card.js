@@ -6,9 +6,9 @@ function Card(props) {
   return(
     <div className = "card">
       <h3> {props.name} </h3>
-      <h6> {props.url} </h6>
+      <p> {props.url} </p>
       <p> {props.description} </p> 
-      <h2> {props.imageURL} </h2>
+      <p> {props.imageURL} </p>
     </div> 
     
   )

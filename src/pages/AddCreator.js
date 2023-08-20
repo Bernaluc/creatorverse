@@ -1,22 +1,38 @@
 import React from 'react';
+import { supabase } from '../client';
+import { useState, useEffect } from 'react';
 
 export default function AddCreator() {
+  const [creators, setCreators] = useState([])
+  const [creator, setCreator] = useState({
+    id: null,
+    name: "",
+    url: "",
+    desciption: "",
+    imageURL: "",
+  });
+  
+  const { name, url, description, imageURL } = creator;
+
+  useEffect(() => {
+  }, []);
 
   
   async function createCreator() {
-    console.log('creatCreators')
+    console.log('createCreators')
     await supabase
       .from('creators')
       .insert([
         { name, url, description, imageURL }
       ])
-      .single();
+      .single()
     setCreator({ name: '', url: '', description: '', imageURL: '' })
-    fetchCreators()
     console.log("CreateCreator: Fetch: ", data)
   }
+
   return(
-    <div className="App">
+
+    <div className="creator-input">
       <input
         placeholder="Name"
         value={name}
